@@ -27,3 +27,8 @@ media/
 /tmp/
 *.webp
 *.png
+
+# Tests
+playwright-report/
+test-results/
+

@@ -39,6 +39,7 @@ const currentYear = new Date().getFullYear();
   <div class="footer-bottom">
     <div class="container">
       <p>&copy; {currentYear} GH Advocacia. Todos os direitos reservados. <span>Excelência em cada detalhe.</span></p>
+      <p class="credits">Desenvolvido por <a href="https://startaweb.com.br" target="_blank">Agência StartaWeb</a></p>
     </div>
   </div>
 </footer>
@@ -149,6 +150,24 @@ const currentYear = new Date().getFullYear();
     margin-top: 0.5rem;
     color: var(--primary);
     font-weight: 600;
+  }
+
+  .credits {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .credits a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .credits a:hover {
+    opacity: 1;
+    text-decoration: underline;
   }
 
   @media (max-width: 992px) {

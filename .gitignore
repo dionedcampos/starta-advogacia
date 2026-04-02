@@ -27,6 +27,7 @@ media/
 /tmp/
 *.webp
 *.png
+!src/assets/*.png
 
 # Tests
 playwright-report/

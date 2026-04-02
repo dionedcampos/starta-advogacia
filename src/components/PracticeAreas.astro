@@ -44,7 +44,7 @@ const areas = [
     <div class="areas-grid">
       {areas.map((area) => (
         <div class="area-card" data-animate>
-          <div class="area-icon"><i class={area.icon}></i></div>
+          <div class="area-icon"><i class={area.icon} aria-hidden="true"></i></div>
           <h3>{area.title}</h3>
           <p>{area.description}</p>
         </div>
@@ -154,12 +154,23 @@ const areas = [
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .areas-grid {
-      grid-template-columns: 1fr;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.5rem;
+      padding: 1rem 0 3rem;
+      scrollbar-width: none;
     }
+
+    .areas-grid::-webkit-scrollbar {
+      display: none;
+    }
+
     .area-card {
-      padding: 3rem 2rem;
+      flex: 0 0 80vw;
+      scroll-snap-align: center;
     }
   }
 </style>

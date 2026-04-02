@@ -13,7 +13,7 @@ const partners = [
     <div class="partners-slider">
       {partners.map((partner) => (
         <div class="partner-item" data-animate>
-          <div class="partner-logo"><i class={partner.icon}></i></div>
+          <div class="partner-logo"><i class={partner.icon} aria-hidden="true"></i></div>
           <span class="partner-name">{partner.name}</span>
         </div>
       ))}

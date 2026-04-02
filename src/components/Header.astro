@@ -13,12 +13,13 @@ import Logo from './Logo.astro';
         <li><a href="#about">Sobre</a></li>
         <li><a href="#services">Áreas de Atuação</a></li>
         <li><a href="#testimonials">Depoimentos</a></li>
+        <li class="mobile-cta-item"><a href="https://wa.me/559991764210?text=Olá! Gostaria de agendar uma consulta jurídica. Vi seu contato através do site." target="_blank" class="btn btn-primary">Consulta Grátis</a></li>
       </ul>
     </nav>
     <div class="header-actions">
       <a href="https://wa.me/559991764210?text=Olá! Gostaria de agendar uma consulta jurídica. Vi seu contato através do site." target="_blank" class="btn btn-primary btn-sm">Consulta Grátis</a>
     </div>
-    <button class="mobile-menu-btn" aria-label="Menu">
+    <button class="mobile-menu-btn" aria-label="Alternar Menu" id="mobile-menu-toggle">
       <span></span>
       <span></span>
       <span></span>
@@ -26,10 +27,56 @@ import Logo from './Logo.astro';
   </div>
 </header>
 
+<script>
+  // Mobile Menu Toggle
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const nav = document.querySelector('.nav');
+
+  toggleBtn?.addEventListener('click', () => {
+    nav?.classList.toggle('active');
+    toggleBtn?.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  const navLinks = document.querySelectorAll('.nav-list a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      nav?.classList.remove('active');
+      toggleBtn?.classList.remove('active');
+    });
+  });
+
+  // Scroll Spy
+  const sections = document.querySelectorAll('section[id]');
+  
+  function highlightNav() {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(current => {
+      const sectionHeight = (current as HTMLElement).offsetHeight;
+      const sectionTop = (current as HTMLElement).offsetTop - 150;
+      const sectionId = current.getAttribute('id');
+      
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        document.querySelector(`.nav-list a[href*=${sectionId}]`)?.classList.add('active');
+        document.querySelector(`.nav-list a[href*=${sectionId}]`)?.setAttribute('aria-current', 'page');
+      } else {
+        document.querySelector(`.nav-list a[href*=${sectionId}]`)?.classList.remove('active');
+        document.querySelector(`.nav-list a[href*=${sectionId}]`)?.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightNav);
+  window.addEventListener('load', highlightNav);
+</script>
+
 <style>
   .header {
     height: var(--header-height);
-    background-color: var(--bg);
+    background-color: rgba(255, 255, 255, 0.85); /* Fundo com opacidade para Glassmorphism */
+    backdrop-filter: blur(12px); /* Efeito de desfoque premium */
+    -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -90,8 +137,13 @@ import Logo from './Logo.astro';
     color: var(--primary);
   }
 
-  .nav-list a:hover::after {
+  .nav-list a:hover::after,
+  .nav-list a.active::after {
     width: 100%;
+  }
+
+  .nav-list a.active {
+    color: var(--primary);
   }
 
   .header-actions {
@@ -118,6 +170,7 @@ import Logo from './Logo.astro';
     flex-direction: column;
     gap: 6px;
     margin-left: auto;
+    z-index: 1100;
   }
 
   .mobile-menu-btn span {
@@ -128,15 +181,81 @@ import Logo from './Logo.astro';
     transition: var(--transition);
   }
 
+  /* Mobile Button Animation */
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
   @media (max-width: 1024px) {
-    .nav, .header-actions {
+    .header-actions {
       display: none;
     }
+
     .mobile-menu-btn {
       display: flex;
     }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: var(--bg);
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 1.5rem; /* Reduzido para caber mais itens */
+      transition: var(--transition);
+      z-index: 1050;
+      overflow-y: auto; /* Permite scroll se o menu for longo */
+    }
+
+    .nav.active {
+      right: 0;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: center; /* Centralizado fica mais elegante no mobile */
+      width: 100%;
+      gap: 1rem; /* Gap menor pois usaremos padding nos links */
+    }
+
+    .nav-list li {
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-list a {
+      display: block;
+      width: 100%;
+      padding: 1.5rem 0; /* Área de toque aumentada conforme solicitado */
+      font-size: 1.1rem;
+    }
+
     .header-container {
       justify-content: space-between;
+      gap: 1rem; /* Gap reduzido para evitar overflow horizontal */
+    }
+
+    .mobile-cta-item {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .mobile-cta-item {
+      display: none;
     }
   }
 </style>

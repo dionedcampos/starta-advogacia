@@ -41,7 +41,7 @@ const testimonials = [
           <p class="testimonial-text">"{item.text}"</p>
           <div class="testimonial-rating">
             {[...Array(5)].map(() => (
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
             ))}
           </div>
         </div>
@@ -145,9 +145,23 @@ const testimonials = [
 
   @media (max-width: 992px) {
     .testimonials-grid {
-      grid-template-columns: 1fr;
-      max-width: 600px;
-      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding: 1rem 0 3rem;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Webkit */
+    }
+
+    .testimonial-card {
+      flex: 0 0 85vw; /* Ocupa a maior parte da tela, mas permite ver o próximo */
+      scroll-snap-align: center;
+      margin: 0;
     }
   }
 </style>

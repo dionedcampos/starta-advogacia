@@ -1,0 +1,142 @@
+---
+import Logo from './Logo.astro';
+---
+
+<header class="header">
+  <div class="container header-container">
+    <a href="/" class="logo-link">
+      <Logo width="180" height="60" light={false} />
+    </a>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#services">Áreas de Atuação</a></li>
+        <li><a href="#testimonials">Depoimentos</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/559991764210?text=Olá! Gostaria de agendar uma consulta jurídica. Vi seu contato através do site." target="_blank" class="btn btn-primary btn-sm">Consulta Grátis</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    height: var(--header-height);
+    background-color: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: center; /* Center the container child */
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle borderline for authority */
+  }
+
+  .header-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Aligned to left as requested */
+    align-items: center;
+    gap: 4rem; /* Space between logo and nav */
+  }
+
+  .logo-link {
+    flex-shrink: 0;
+  }
+
+  .nav {
+    flex-grow: 1;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-list a {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-sans);
+    position: relative;
+    padding-bottom: 4px;
+    transition: var(--transition);
+  }
+
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+    transform-origin: left;
+  }
+
+  .nav-list a:hover {
+    color: var(--primary);
+  }
+
+  .nav-list a:hover::after {
+    width: 100%;
+  }
+
+  .header-actions {
+    flex-shrink: 0;
+  }
+
+  .btn-sm {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.8rem;
+    border-radius: 0; /* Sharp corners for professional look */
+    border: 1px solid var(--primary);
+  }
+
+  .btn-sm:hover {
+    background-color: transparent;
+    color: var(--primary);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text);
+    transition: var(--transition);
+  }
+
+  @media (max-width: 1024px) {
+    .nav, .header-actions {
+      display: none;
+    }
+    .mobile-menu-btn {
+      display: flex;
+    }
+    .header-container {
+      justify-content: space-between;
+    }
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+const testimonials = [
+  {
+    name: 'Roberto Silva',
+    role: 'Empresário',
+    text: 'A assessoria jurídica da GH foi fundamental para a segurança do meu negócio. Profissionais extremamente éticos e competentes.',
+    image: 'https://i.pravatar.cc/150?u=roberto'
+  },
+  {
+    name: 'Ana Oliveira',
+    role: 'Dra. em Direito',
+    text: 'Recomendo fortemente pela agilidade e profundidade técnica em casos complexos de Direito Civil.',
+    image: 'https://i.pravatar.cc/150?u=ana'
+  },
+  {
+    name: 'Carlos Mendes',
+    role: 'Investidor Imobiliário',
+    text: 'Excelente atendimento no setor imobiliário. Resolveram problemas que pareciam impossíveis com maestria.',
+    image: 'https://i.pravatar.cc/150?u=carlos'
+  }
+];
+---
+
+<section class="testimonials section-padding" id="testimonials">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-subtitle">Depoimentos</span>
+      <h2 class="section-title">O que nossos <span class="text-gold">Clientes</span> Dizem</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      {testimonials.map((item) => (
+        <div class="testimonial-card" data-animate>
+          <div class="testimonial-header">
+            <img src={item.image} alt={item.name} class="testimonial-img" />
+            <div>
+              <h4>{item.name}</h4>
+              <span>{item.role}</span>
+            </div>
+          </div>
+          <p class="testimonial-text">"{item.text}"</p>
+          <div class="testimonial-rating">
+            {[...Array(5)].map(() => (
+              <i class="fa-solid fa-star"></i>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background-color: #f9f9f9; /* Cinza solicitado pelo usuário */
+    position: relative;
+    border-top: 1px solid rgba(189, 159, 72, 0.1);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .testimonial-card {
+    padding: 3.5rem 2.5rem;
+    background-color: var(--white); /* Card Branco Puro */
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .testimonial-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+  }
+
+  .testimonial-header h4 {
+    font-size: 1.25rem;
+    color: var(--text);
+    font-family: var(--font-serif);
+    margin-bottom: 0.2rem;
+  }
+
+  .testimonial-header span {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .testimonial-text {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    text-align: center;
+    position: relative;
+  }
+
+  .testimonial-text::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.2;
+    font-family: var(--font-serif);
+  }
+
+  .testimonial-rating {
+    color: var(--primary);
+    letter-spacing: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 992px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+</style>

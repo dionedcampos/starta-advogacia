@@ -1,0 +1,134 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.jpg';
+---
+
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="container hero-container">
+    <div class="hero-content" data-animate>
+      <span class="hero-badge">Excelência Jurídica</span>
+      <h1 class="hero-title">Defesa Estratégica e <span class="text-gold">Resultados de Alta Performance</span></h1>
+      <p class="hero-subtitle">Comprometidos com a ética e a dedicação absoluta na proteção dos seus direitos e do seu patrimônio.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/559991764210?text=Olá! Gostaria de agendar uma consulta jurídica. Vi seu contato através do site." target="_blank" class="btn btn-primary">Falar com Advogado</a>
+        <a href="#services" class="btn btn-outline" style="color: white; border-color: white;">Nossas Áreas</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image-wrapper">
+    <Image src={heroImage} alt="Advogado GH Advocacia" class="hero-img" quality="max" />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: calc(100vh - var(--header-height));
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-dark);
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(28, 28, 28, 0.95) 20%, rgba(28, 28, 28, 0.6) 50%, rgba(28, 28, 28, 0.2) 100%);
+    z-index: 2;
+  }
+
+  .hero-container {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-start; /* Ensure centered container has content starting from left */
+  }
+
+  .hero-content {
+    max-width: 700px;
+    text-align: left; /* Strict left alignment */
+  }
+
+  .hero-badge {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--primary);
+    padding-left: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.05;
+    font-family: var(--font-serif);
+  }
+
+  .hero-subtitle {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .hero-image-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .btn-outline {
+    border-radius: 0;
+  }
+
+  @media (max-width: 992px) {
+    .hero {
+      min-height: 600px;
+    }
+    .hero-container {
+      justify-content: flex-start; /* Keep left alignment even on smaller screens as requested */
+    }
+    .hero-content {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    .hero-overlay {
+      background: linear-gradient(rgba(28, 28, 28, 0.85), rgba(28, 28, 28, 0.85));
+    }
+    .hero-image-wrapper {
+      width: 100%;
+    }
+  }
+</style>

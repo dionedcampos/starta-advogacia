@@ -1,0 +1,165 @@
+---
+const areas = [
+  {
+    title: 'Direito Civil',
+    description: 'Resolução de conflitos, contratos, responsabilidade civil e direitos de propriedade.',
+    icon: 'fas fa-scale-balanced'
+  },
+  {
+    title: 'Direito da Família',
+    description: 'Divórcio, guarda de filhos, pensão alimentícia e planejamento sucessório.',
+    icon: 'fas fa-users'
+  },
+  {
+    title: 'Direito Trabalhista',
+    description: 'Defesa dos direitos do trabalhador e consultoria preventiva para empresas.',
+    icon: 'fas fa-briefcase'
+  },
+  {
+    title: 'Direito Penal',
+    description: 'Atuação em Inquéritos Policiais, Ações Penais e Tribunal do Júri.',
+    icon: 'fas fa-gavel'
+  },
+  {
+    title: 'Direito Imobiliário',
+    description: 'Regularização de imóveis, usucapião, despejos e contratos de compra e venda.',
+    icon: 'fas fa-house-chimney'
+  },
+  {
+    title: 'Direito Digital',
+    description: 'Proteção de dados (LGPD), crimes virtuais e consultoria em e-commerce.',
+    icon: 'fas fa-shield-halved'
+  }
+];
+---
+
+<section class="practice-areas section-padding" id="services">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-subtitle">Excellence in Law</span>
+      <h2 class="section-title">Especialidades <span class="text-gold">Jurídicas</span></h2>
+      <p class="section-description">Oferecemos suporte jurídico de alta complexidade com especialistas dedicados a cada segmento do Direito.</p>
+    </div>
+    
+    <div class="areas-grid">
+      {areas.map((area) => (
+        <div class="area-card" data-animate>
+          <div class="area-icon"><i class={area.icon}></i></div>
+          <h3>{area.title}</h3>
+          <p>{area.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .practice-areas {
+    background-color: var(--bg); /* Fundo Claro */
+    color: var(--text);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .section-subtitle {
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-family: var(--font-serif);
+  }
+
+  .section-description {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .area-card {
+    background-color: var(--bg-offset);
+    padding: 4rem 2.5rem;
+    border: 1px solid rgba(74, 71, 65, 0.1);
+    position: relative;
+    transition: var(--transition);
+    overflow: hidden;
+  }
+
+  .area-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: var(--transition);
+  }
+
+  .area-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+  }
+
+  .area-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .area-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .area-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+    font-family: var(--font-serif);
+  }
+
+  .area-card p {
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 992px) {
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .areas-grid {
+      grid-template-columns: 1fr;
+    }
+    .area-card {
+      padding: 3rem 2rem;
+    }
+  }
+</style>

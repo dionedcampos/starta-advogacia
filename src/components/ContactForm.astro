@@ -1,0 +1,164 @@
+---
+import { Image } from 'astro:assets';
+import mapGh from '../assets/map-gh.png';
+---
+
+<section class="contact section-padding" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-content" data-animate>
+        <span class="section-subtitle">Agende sua Consulta</span>
+        <h2 class="section-title">Proteja seus <span class="text-gold">Direitos</span> Hoje Mesmo</h2>
+        <p class="section-desc">Atendimento especializado em João Lisboa e região. Entre em contato ou visite nosso escritório.</p>
+        
+        <div class="contact-info">
+          <div class="info-item">
+            <strong><i class="fa-solid fa-location-dot"></i> Endereço:</strong>
+            <p>R. 15 de Novembro, 601 - Centro, João Lisboa - MA, 65922-000</p>
+          </div>
+          <div class="info-item">
+            <strong><i class="fa-solid fa-clock"></i> Horário de Funcionamento:</strong>
+            <p>Segunda a Sexta: 08:00 às 18:00</p>
+          </div>
+          <div class="info-item">
+            <strong><i class="fa-solid fa-phone"></i> Telefone:</strong>
+            <p>(99) 99176-4210</p>
+          </div>
+          <div class="info-item">
+            <strong><i class="fa-solid fa-envelope"></i> E-mail:</strong>
+            <p>contato@ghadvocacia.com.br</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-map-wrapper" data-animate>
+        <a href="https://maps.app.goo.gl/iTG4C6v4mG4YsbKD9" target="_blank" rel="noopener noreferrer" class="map-link">
+          <div class="map-container">
+            <Image src={mapGh} alt="Localização GH Advocacia" class="map-image" />
+            <div class="map-overlay">
+              <span><i class="fa-solid fa-magnifying-glass-location"></i> Ver no Google Maps</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background-color: var(--bg); /* Fundo Claro */
+    color: var(--text);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    font-family: var(--font-serif);
+  }
+
+  .section-desc {
+    margin-bottom: 2.5rem;
+    color: var(--text-muted);
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-item strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .info-item p {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Map Special Styles */
+  .contact-map-wrapper {
+    height: 100%;
+    min-height: 450px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(189, 159, 72, 0.2);
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition);
+  }
+
+  .contact-map-wrapper:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(189, 159, 72, 0.15);
+  }
+
+  .map-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .map-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+    opacity: 0.8;
+  }
+
+  .contact-map-wrapper:hover .map-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, var(--primary-dark), transparent);
+  }
+
+  @media (max-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    .contact-map-wrapper {
+      min-height: 350px;
+    }
+  }
+</style>
+

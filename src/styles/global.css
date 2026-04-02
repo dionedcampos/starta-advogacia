@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  /* Cores Principais (Baseadas na Referência Legalor) */
+  --primary: #bd9f48;
+  /* Gold Premium */
+  --primary-dark: #a68b3f;
+  /* Darker Gold for hover */
+  --secondary: #1c1c1c;
+  /* Almost Black */
+  --secondary-light: #333333;
+  --accent: #d4cfc1;
+  /* Marble Gray */
+
+  /* Textos */
+  --text: #333333;
+  --text-muted: #666666;
+  --text-light: #ffffff;
+  --text-muted-light: rgba(255, 255, 255, 0.7);
+
+  /* Backgrounds */
+  --bg: #ffffff;
+  /* White */
+  --bg-dark: #1c1c1c;
+  /* Dark Charcoal */
+  --bg-offset: #f9f9f9;
+
+  /* Utilitários */
+  --white: #ffffff;
+  --black: #0a0a0a;
+
+  --font-sans: 'Lato', system-ui, -apple-system, sans-serif;
+  --font-serif: 'EB Garamond', serif;
+
+  --container-width: 1200px;
+  --header-height: 80px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background-color: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.text-gold {
+  color: var(--primary);
+}
+
+.text-serif {
+  font-family: var(--font-serif);
+}
+
+.italic {
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+}

@@ -1,0 +1,46 @@
+---
+interface Props {
+  width?: string;
+  height?: string;
+  light?: boolean;
+}
+
+const { width = "180", height = "70", light = false } = Astro.props;
+---
+
+<div class="logo-wrapper">
+  <svg width={width} height={height} viewBox="0 0 180 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Letters GH interconnected -->
+    <g class="letters">
+      <!-- G Shape -->
+      <path d="M30 20 C 15 20, 5 30, 5 45 C 5 60, 15 70, 30 70 C 45 70, 55 60, 55 45 L 40 45" stroke={light ? "white" : "var(--primary)"} stroke-width="6" stroke-linecap="round" fill="none" />
+      <!-- H vertical bar right -->
+      <path d="M75 20 L 75 70" stroke={light ? "white" : "var(--primary)"} stroke-width="6" stroke-linecap="round" />
+      <!-- Connecting bar (middle of G to middle of H) -->
+      <path d="M55 45 L 75 45" stroke={light ? "white" : "var(--primary)"} stroke-width="6" stroke-linecap="round" />
+      <!-- Vertical bar of H left (separate or implied) -->
+      <path d="M55 20 L 55 45" stroke={light ? "white" : "var(--primary)"} stroke-width="6" stroke-linecap="round" />
+      
+      <!-- Scales Icon inside G -->
+      <g transform="translate(18, 38) scale(0.4)">
+        <path d="M20 10 L 2 30 H 38 L 20 10 Z" fill={light ? "white" : "var(--primary)"} opacity="0.8" />
+        <rect x="18" y="30" width="4" height="15" fill={light ? "white" : "var(--primary)"} />
+      </g>
+    </g>
+    
+    <!-- ADVOCACIA Text - Moved closer to GH -->
+    <text x="85" y="55" font-family="var(--font-sans)" font-size="18" font-weight="700" letter-spacing="1" fill={light ? "white" : "var(--secondary)"}>ADVOCACIA</text>
+  </svg>
+</div>
+
+<style>
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+  
+  svg {
+    overflow: visible;
+  }
+</style>

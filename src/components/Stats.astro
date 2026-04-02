@@ -1,0 +1,93 @@
+---
+const stats = [
+  { label: 'Casos Vencidos', value: '1,500+' },
+  { label: 'Anos de Experiência', value: '20+' },
+  { label: 'Clientes Satisfeitos', value: '3,000+' },
+  { label: 'Áreas de Atuação', value: '15+' },
+];
+---
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div class="stat-item" data-animate>
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+          <div class="stat-divider"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    background-color: var(--bg-dark); /* Preto Profundo (Fachada) */
+    padding: 6rem 0;
+    color: var(--text-light);
+    position: relative;
+    border-top: 1px solid rgba(74, 71, 65, 0.3);
+    border-bottom: 1px solid rgba(74, 71, 65, 0.3);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+    text-align: center;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+  }
+
+  .stat-item:hover {
+    transform: scale(1.05);
+  }
+
+  .stat-value {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: var(--primary); /* Gold Heritage */
+    font-family: var(--font-serif);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+  }
+
+  .stat-divider {
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary);
+    margin-top: 0.5rem;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 992px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .stats {
+      padding: 4rem 0;
+    }
+  }
+</style>

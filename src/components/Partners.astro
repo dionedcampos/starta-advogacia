@@ -1,0 +1,72 @@
+---
+const partners = [
+  { name: 'Empresa A', icon: 'fas fa-landmark' },
+  { name: 'Empresa B', icon: 'fas fa-shield-halved' },
+  { name: 'Empresa C', icon: 'fas fa-scale-balanced' },
+  { name: 'Empresa D', icon: 'fas fa-file-contract' },
+  { name: 'Empresa E', icon: 'fas fa-gem' },
+];
+---
+
+<section class="partners">
+  <div class="container">
+    <div class="partners-slider">
+      {partners.map((partner) => (
+        <div class="partner-item" data-animate>
+          <div class="partner-logo"><i class={partner.icon}></i></div>
+          <span class="partner-name">{partner.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .partners {
+    padding: 3rem 0;
+    background-color: var(--bg-dark); /* Fundo Escuro */
+    border-top: 1px solid rgba(189, 159, 72, 0.1);
+    border-bottom: 1px solid rgba(189, 159, 72, 0.1);
+  }
+
+  .partners-slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    opacity: 0.8; /* Aumentado para melhor visibilidade no fundo escuro */
+    filter: grayscale(1) brightness(10); /* Inverte para branco */
+    transition: var(--transition);
+  }
+
+  .partners-slider:hover {
+    opacity: 1;
+    filter: grayscale(0) brightness(1);
+  }
+
+  .partner-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .partner-logo {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+
+  .partner-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: var(--font-serif);
+    color: var(--text-light); /* Texto Claro */
+  }
+
+  @media (max-width: 768px) {
+    .partners-slider {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+  }
+</style>
